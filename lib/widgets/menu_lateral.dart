@@ -9,11 +9,18 @@ class MenuLateral extends StatelessWidget {
           color: Colors.orange,
           child: ListView(
             children: <Widget>[
-              DrawerHeader(
-                child: Center(
-                    child: Text("All In The Mind",
-                        style: TextStyle(fontSize: 35))),
+              InkWell(
+                onTap: () {
+                  print("asd");
+                },
+                child: Container(
+                  height: 150,
+                  child: Center(
+                      child: Text("All In The Mind",
+                          style: TextStyle(fontSize: 35))),
+                ),
               ),
+              Divider(),
             ],
           ),
         ),
