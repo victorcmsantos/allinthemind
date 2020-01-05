@@ -12,6 +12,7 @@ class MenuLateral extends StatelessWidget {
               InkWell(
                 onTap: () {
                   print("asd");
+                  Navigator.pop(context);
                 },
                 child: Container(
                   height: 150,
