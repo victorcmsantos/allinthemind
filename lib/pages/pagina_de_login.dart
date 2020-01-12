@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-class PaginaDeLogin extends StatelessWidget {
+class PaginaDeLogin extends StatefulWidget {
+  @override
+  _PaginaDeLoginState createState() => _PaginaDeLoginState();
+}
+
+class _PaginaDeLoginState extends State<PaginaDeLogin> {
   @override
   Widget build(BuildContext context) {
     return Container(

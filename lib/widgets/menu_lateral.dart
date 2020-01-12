@@ -1,3 +1,6 @@
+import 'package:allinthemind/pages/pagina_dos_cursos.dart';
+import 'package:allinthemind/pages/pagina_inicial.dart';
+import 'package:allinthemind/utils/nav.dart';
 import 'package:flutter/material.dart';
 
 class MenuLateral extends StatelessWidget {
@@ -13,6 +16,7 @@ class MenuLateral extends StatelessWidget {
                 onTap: () {
                   print("asd");
                   Navigator.pop(context);
+                  push(context, PaginaInicial());
                 },
                 child: Container(
                   height: 150,
@@ -20,6 +24,18 @@ class MenuLateral extends StatelessWidget {
                       child: Text("All In The Mind",
                           style: TextStyle(fontSize: 35))),
                 ),
+              ),
+              Divider(),
+              ListTile(
+                leading: Icon(Icons.star),
+                title: Text("Cursos"),
+                subtitle: Text("Todos os Cursos"),
+                trailing: Icon(Icons.arrow_forward),
+                onTap: () {
+                  print("foddaaaaa");
+                  Navigator.pop(context);
+                  push(context, PaginaCursos());
+                },
               ),
               Divider(),
             ],

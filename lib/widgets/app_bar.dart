@@ -1,3 +1,7 @@
+import 'package:allinthemind/pages/pagina_de_login.dart';
+import 'package:allinthemind/pages/pagina_pessoal.dart';
+import 'package:allinthemind/pages/sobre_nos.dart';
+import 'package:allinthemind/utils/nav.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -21,15 +25,24 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           offset: Offset(200, 100),
           itemBuilder: (context) => [
             PopupMenuItem(
+              value: SobreNos(),
               child: Text("Sobre Nos"),
             ),
             PopupMenuItem(
+              value: PaginaPessoal(),
               child: Text("logado? Minha Conta"),
             ),
             PopupMenuItem(
+              value: PaginaDeLogin(),
               child: Text("LoginLogout"),
             ),
           ],
+          onCanceled: () {
+            print("You have canceled the menu.");
+          },
+          onSelected: (value) {
+            push(context, value);
+          },
         ),
       ],
     );

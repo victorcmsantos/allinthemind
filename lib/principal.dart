@@ -15,10 +15,11 @@ class _InicialState extends State<Principal> {
   }
 
   Widget _body() {
-    return Scaffold(
-      appBar: AppBarWidget(appBar: AppBar()),
-      drawer: MenuLateral(),
-      body: Inicial(),
-    );
+    return PaginaInicial();
+//    return Scaffold(
+//      appBar: AppBarWidget(appBar: AppBar()),
+//      drawer: MenuLateral(),
+//      body: Inicial(),
+//    );
   }
 }
