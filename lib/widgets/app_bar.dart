@@ -25,15 +25,15 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           offset: Offset(200, 100),
           itemBuilder: (context) => [
             PopupMenuItem(
-              value: SobreNos(),
+              value: AboutUS(),
               child: Text("Sobre Nos"),
             ),
             PopupMenuItem(
-              value: PaginaPessoal(),
+              value: MyPage(),
               child: Text("logado? Minha Conta"),
             ),
             PopupMenuItem(
-              value: PaginaDeLogin(),
+              value: LoginPage(),
               child: Text("LoginLogout"),
             ),
           ],

@@ -1,14 +1,15 @@
+import 'package:allinthemind/utils/web.dart';
 import 'package:allinthemind/utils/webserver_http.dart';
 import 'package:allinthemind/widgets/app_bar.dart';
 import 'package:allinthemind/widgets/menu_lateral.dart';
 import 'package:flutter/material.dart';
 
-class PaginaCursos extends StatefulWidget {
+class CoursesPage extends StatefulWidget {
   @override
-  _PaginaCursosState createState() => _PaginaCursosState();
+  _CoursesPageState createState() => _CoursesPageState();
 }
 
-class _PaginaCursosState extends State<PaginaCursos>  {
+class _CoursesPageState extends State<CoursesPage>  {
 
 
 
@@ -18,11 +19,12 @@ class _PaginaCursosState extends State<PaginaCursos>  {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(appBar: AppBar()),
-      drawer: MenuLateral(),
+      drawer: LateralMenu(),
       body: Container(
         color: Colors.white70,
         child: Center(
-          child: Text(_statusResponse().toString()),
+//          child: Text(_statusResponse().toString()),
+          child: Text(WebServer().toString()),
         ),
 
       ),

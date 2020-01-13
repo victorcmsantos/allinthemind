@@ -15,7 +15,7 @@ class _InicialState extends State<Principal> {
   }
 
   Widget _body() {
-    return PaginaInicial();
+    return InitialPage();
 //    return Scaffold(
 //      appBar: AppBarWidget(appBar: AppBar()),
 //      drawer: MenuLateral(),

@@ -3,7 +3,7 @@ import 'package:allinthemind/pages/pagina_inicial.dart';
 import 'package:allinthemind/utils/nav.dart';
 import 'package:flutter/material.dart';
 
-class MenuLateral extends StatelessWidget {
+class LateralMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,7 +16,7 @@ class MenuLateral extends StatelessWidget {
                 onTap: () {
                   print("asd");
                   Navigator.pop(context);
-                  push(context, PaginaInicial());
+                  push(context, InitialPage());
                 },
                 child: Container(
                   height: 150,
@@ -34,7 +34,7 @@ class MenuLateral extends StatelessWidget {
                 onTap: () {
                   print("foddaaaaa");
                   Navigator.pop(context);
-                  push(context, PaginaCursos());
+                  push(context, CoursesPage());
                 },
               ),
               Divider(),

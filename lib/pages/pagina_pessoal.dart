@@ -2,17 +2,17 @@ import 'package:allinthemind/widgets/app_bar.dart';
 import 'package:allinthemind/widgets/menu_lateral.dart';
 import 'package:flutter/material.dart';
 
-class PaginaPessoal extends StatefulWidget {
+class MyPage extends StatefulWidget {
   @override
-  _PaginaPessoalState createState() => _PaginaPessoalState();
+  _MyPageState createState() => _MyPageState();
 }
 
-class _PaginaPessoalState extends State<PaginaPessoal> {
+class _MyPageState extends State<MyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(appBar: AppBar()),
-      drawer: MenuLateral(),
+      drawer: LateralMenu(),
       body: Container(
         color: Colors.white70,
         child: Center(
