@@ -1,6 +1,4 @@
-import 'package:allinthemind/pages/pagina_inicial.dart';
-import 'package:allinthemind/widgets/app_bar.dart';
-import 'package:allinthemind/widgets/menu_lateral.dart';
+import 'package:allinthemind/pages/initial_page.dart';
 import 'package:flutter/material.dart';
 
 class Principal extends StatefulWidget {

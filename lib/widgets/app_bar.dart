@@ -1,6 +1,8 @@
-import 'package:allinthemind/pages/pagina_de_login.dart';
-import 'package:allinthemind/pages/pagina_pessoal.dart';
-import 'package:allinthemind/pages/sobre_nos.dart';
+
+
+import 'package:allinthemind/pages/about_us.dart';
+import 'package:allinthemind/pages/login_page.dart';
+import 'package:allinthemind/pages/my_page.dart';
 import 'package:allinthemind/utils/nav.dart';
 import 'package:flutter/material.dart';
 
