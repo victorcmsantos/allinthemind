@@ -1,14 +1,16 @@
 import 'dart:convert';
-import 'package:allinthemind/utils/api_response.dart';
-import 'package:allinthemind/utils/user.dart';
+import 'package:allinthemind/utils/login/api_response.dart';
+import 'package:allinthemind/utils/login/user.dart';
 import 'package:http/http.dart' as http;
+import 'package:allinthemind/vars/vars.dart' as globals;
+
 
 class LoginApi {
   static Future<ApiResponse<User>> login(String login, String senha) async {
     try {
       //var url = "http://10.123.233.176:86/login";
-      var url = "http://192.168.1.177:86/login";
-
+      //var url = "http://192.168.1.177:86/login";
+      //var url = "http://192.168.43.15:86/login";
 
       Map params = {
         "username": login,
@@ -22,7 +24,7 @@ class LoginApi {
       };
 
       var response = await http.post(
-        url,
+        globals.webserver_url + '/login',
         body: json_params,
         headers: headers,
       );
@@ -40,7 +42,6 @@ class LoginApi {
       print("Erro no Login $error > $exception");
 
       return ApiResponse.error("nao possivel conectar ao servidor");
-
     }
   }
 }
