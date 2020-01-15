@@ -8,10 +8,6 @@ import 'package:allinthemind/vars/vars.dart' as globals;
 class LoginApi {
   static Future<ApiResponse<User>> login(String login, String senha) async {
     try {
-      //var url = "http://10.123.233.176:86/login";
-      //var url = "http://192.168.1.177:86/login";
-      //var url = "http://192.168.43.15:86/login";
-
       Map params = {
         "username": login,
         "password": senha,
