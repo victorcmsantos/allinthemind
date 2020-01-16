@@ -1,5 +1,3 @@
-
-
 import 'package:allinthemind/widgets/app_bar.dart';
 import 'package:allinthemind/widgets/lateral_menu.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +11,9 @@ class _HomePageState extends State<InitialPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(appBar: AppBar()),
+      appBar: AppBarWidget(
+        appBar: AppBar(),
+      ),
       drawer: LateralMenu(),
       body: Container(
         color: Colors.white70,
@@ -24,3 +24,16 @@ class _HomePageState extends State<InitialPage> {
     );
   }
 }
+
+class Courses {
+  const Courses({this.coursesname});
+
+  final Text coursesname;
+}
+
+const List<Courses> courses = <Courses>[
+  const Courses(coursesname: Text('All Courses')),
+  const Courses(coursesname: Text('Favorite Courses')),
+  const Courses(coursesname: Text('Archived Courses')),
+  const Courses(coursesname: Text('Offline Ready Courses')),
+];
