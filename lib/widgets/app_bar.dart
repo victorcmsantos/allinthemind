@@ -1,5 +1,3 @@
-
-
 import 'package:allinthemind/pages/about_us.dart';
 import 'package:allinthemind/pages/login_page.dart';
 import 'package:allinthemind/pages/my_page.dart';
@@ -16,38 +14,43 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.orange,
       actions: <Widget>[
-        PopupMenuButton(
-          icon: ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: Image.asset(
-              'assets/imagens/FILE0114.png',
-//              fit: BoxFit.fill,
-            ),
-          ),
-          offset: Offset(200, 100),
-          itemBuilder: (context) => [
-            PopupMenuItem(
-              value: AboutUS(),
-              child: Text("Sobre Nos"),
-            ),
-            PopupMenuItem(
-              value: MyPage(),
-              child: Text("logado? Minha Conta"),
-            ),
-            PopupMenuItem(
-              value: LoginPage(),
-              child: Text("LoginLogout"),
-            ),
-          ],
-          onCanceled: () {
-            print("You have canceled the menu.");
-          },
-          onSelected: (value) {
-            push(context, value);
-          },
-        ),
+ //       PopupMenu(title: "asdasd", onTap: print("sasdsd"),),
+        _PopupMenuButton(context),
       ],
     );
+  }
+
+  PopupMenuButton<Widget> _PopupMenuButton(BuildContext context) {
+    return PopupMenuButton(
+        icon: ClipRRect(
+          borderRadius: BorderRadius.circular(50),
+          child: Image.asset(
+            'assets/imagens/FILE0114.png',
+//              fit: BoxFit.fill,
+          ),
+        ),
+        offset: Offset(200, 100),
+        itemBuilder: (context) => [
+          PopupMenuItem(
+            value: AboutUS(),
+            child: Text("Sobre Nos"),
+          ),
+          PopupMenuItem(
+            value: MyPage(),
+            child: Text("logado? Minha Conta"),
+          ),
+          PopupMenuItem(
+            value: LoginPage(),
+            child: Text("LoginLogout"),
+          ),
+        ],
+        onCanceled: () {
+          print("You have canceled the menu.");
+        },
+        onSelected: (value) {
+          push(context, value);
+        },
+      );
   }
 
   @override

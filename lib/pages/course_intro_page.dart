@@ -2,7 +2,7 @@ import 'package:allinthemind/utils/courses/intro/course_intro_api.dart';
 import 'package:allinthemind/utils/courses/intro/course_introduction.dart';
 import 'package:allinthemind/utils/courses/list/courses_list.dart';
 import 'package:allinthemind/widgets/app_bar.dart';
-import 'package:allinthemind/widgets/lateral_menu.dart';
+//import 'package:allinthemind/widgets/lateral_menu.dart';
 import 'package:flutter/material.dart';
 
 class CourseIntroPage extends StatelessWidget {
@@ -14,7 +14,7 @@ class CourseIntroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(appBar: AppBar()),
-      drawer: LateralMenu(),
+//      drawer: LateralMenu(),
       body: _body(),
     );
   }
