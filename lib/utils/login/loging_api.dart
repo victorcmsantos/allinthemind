@@ -31,6 +31,13 @@ class LoginApi {
 
       if (response.statusCode == 200) {
         final user = User.fromJson(mapResponse);
+
+
+        user.save();
+//        User user2 = await User.get();
+//        print("USER2:  $user2");
+
+
         return ApiResponse.ok(user);
       }
       return ApiResponse.error(mapResponse["msg"]);
