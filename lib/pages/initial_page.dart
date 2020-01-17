@@ -25,15 +25,3 @@ class _HomePageState extends State<InitialPage> {
   }
 }
 
-class Courses {
-  const Courses({this.coursesname});
-
-  final Text coursesname;
-}
-
-const List<Courses> courses = <Courses>[
-  const Courses(coursesname: Text('All Courses')),
-  const Courses(coursesname: Text('Favorite Courses')),
-  const Courses(coursesname: Text('Archived Courses')),
-  const Courses(coursesname: Text('Offline Ready Courses')),
-];

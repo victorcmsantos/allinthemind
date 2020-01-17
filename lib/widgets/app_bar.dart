@@ -1,14 +1,14 @@
-import 'package:allinthemind/pages/about_us.dart';
-//import 'package:allinthemind/pages/initial_page.dart';
-import 'package:allinthemind/pages/login_page.dart';
-import 'package:allinthemind/pages/my_page.dart';
+//import 'package:allinthemind/pages/about_us.dart';
+////import 'package:allinthemind/pages/initial_page.dart';
+//import 'package:allinthemind/pages/login_page.dart';
+//import 'package:allinthemind/pages/my_page.dart';
+import 'package:allinthemind/utils/misc/pages.dart';
 import 'package:allinthemind/utils/nav.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final AppBar appBar;
 
-//  AppBarWidget(this.appBar, this.Courses);
 
   AppBarWidget({Key key, this.appBar}) : super(key: key);
 
@@ -33,7 +33,9 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                 child: Container(
                   child: ListTile(
                     title: p.info,
+
                     onTap: () {
+                      Navigator.pop(context);
                       push(
                         context,
                         p.value,
@@ -52,7 +54,6 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-//
 //  PopupMenuButton<Widget> _PopupMenuButton(BuildContext context) {
 //    return PopupMenuButton(
 //      icon: ClipRRect(
@@ -91,15 +92,3 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 }
 
 
-class Pages {
-  Pages({this.info, this.value});
-
-  final Text info;
-  final value;
-}
-
-List<Pages> pages = <Pages>[
-  Pages(info: Text('Sobre Nos'), value: AboutUS()),
-  Pages(info: Text('Minha Conta'), value: MyPage()),
-  Pages(info: Text('Login'), value: LoginPage()),
-];
