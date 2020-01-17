@@ -16,7 +16,6 @@ class LateralMenu extends StatelessWidget {
             children: <Widget>[
               InkWell(
                 onTap: () {
-                  print("asd");
                   Navigator.pop(context);
                   push(context, InitialPage());
                 },
@@ -34,7 +33,6 @@ class LateralMenu extends StatelessWidget {
                 subtitle: Text("Todos os Cursos"),
                 trailing: Icon(Icons.arrow_forward),
                 onTap: () {
-                  print("foddaaaaa");
                   Navigator.pop(context);
                   push(context, CoursesListPage());
                 },

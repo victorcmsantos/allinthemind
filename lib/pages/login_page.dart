@@ -38,8 +38,8 @@ class _LoginPageState extends State<LoginPage> {
         child: ListView(
           children: <Widget>[
             AppText(
-              "Login",
-              "Digite seu usuario",
+              "email",
+              "Digite seu email cadastrado",
               controller: _controllerLogin,
               validator: _validatorLogin,
             ),
@@ -83,9 +83,6 @@ class _LoginPageState extends State<LoginPage> {
     if (!formkey) {
       return;
     }
-
-    print(login);
-    print(pass);
 
     setState(() {
       _showProgress = true;
