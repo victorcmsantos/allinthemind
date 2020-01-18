@@ -1,5 +1,7 @@
+import 'package:allinthemind/pages/admin_page.dart';
 import 'package:allinthemind/pages/login_page.dart';
 import 'package:allinthemind/pages/my_page.dart';
+import 'package:allinthemind/pages/tutor_page.dart';
 import 'package:allinthemind/utils/login/user.dart';
 import 'package:allinthemind/utils/nav.dart';
 import 'package:flutter/material.dart';
@@ -38,8 +40,16 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
       offset: Offset(200, 100),
       itemBuilder: (context) => [
+        user.roles.contains('admin') == true
+            ? _popupMenuItem(context, pushTo: AdminPage(), text: "Admin")
+            : null,
+        user.roles.contains('tutor') == true
+            ? _popupMenuItem(context, pushTo: TutorPage(), text: "Tutor")
+            : null,
 
-        user != null ? _popupMenuItem(context, pushTo: MyPage(), text: user.username): null ,
+        user != null
+            ? _popupMenuItem(context, pushTo: MyPage(), text: user.username)
+            : null,
 
 //        PopupMenuItem(
 //          child: InkWell(
@@ -56,7 +66,6 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 //        ),
 
         PopupMenuItem(
-
           child: InkWell(
             onTap: () {
               Navigator.pop(context);
@@ -106,11 +115,15 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   }) {
     return PopupMenuItem(
       child: InkWell(
+
         onTap: () {
           Navigator.pop(context);
           push(context, pushTo);
         },
         child: Container(
+//          color: Colors.orange,
+//          padding: EdgeInsets.all(15),
+//          margin: EdgeInsets.all(0),
           child: Center(
             child: Text(
               text,
