@@ -1,3 +1,4 @@
+import 'package:allinthemind/pages/about_us.dart';
 import 'package:allinthemind/pages/courses_list_page.dart';
 import 'package:allinthemind/pages/initial_page.dart';
 import 'package:allinthemind/utils/login/user.dart';
@@ -35,22 +36,27 @@ class LateralMenu extends StatelessWidget {
                 future: future,
                 builder: (context, snapshot) {
                   User user = snapshot.data;
-                //  return _headerInkWell(context, user);
+                  //  return _headerInkWell(context, user);
                   return user != null
                       ? _headerInkWell(context, user)
                       : Container();
                 },
               ),
               Divider(),
-              ListTile(
-                leading: Icon(Icons.star),
-                title: Text("Cursos"),
-                subtitle: Text("Todos os Cursos"),
-                trailing: Icon(Icons.arrow_forward),
-                onTap: () {
-                  Navigator.pop(context);
-                  push(context, CoursesListPage());
-                },
+              _ListContent(
+                context,
+                icon: Icons.description,
+                text: "Sobre Nos",
+                subtext: "Missao  e Visao",
+                pushTo: AboutUS(),
+              ),
+              Divider(),
+              _ListContent(
+                context,
+                icon: Icons.star,
+                text: "Cursos",
+                subtext: "Todos os Cursos",
+                pushTo: CoursesListPage(),
               ),
               Divider(),
             ],
@@ -59,8 +65,26 @@ class LateralMenu extends StatelessWidget {
       ),
     );
   }
-}
 
+  ListTile _ListContent(
+    BuildContext context, {
+    icon: Icon,
+    text: String,
+    subtext: String,
+    pushTo,
+  }) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(text),
+      subtitle: Text(subtext),
+      trailing: Icon(Icons.arrow_forward),
+      onTap: () {
+        Navigator.pop(context);
+        push(context, pushTo);
+      },
+    );
+  }
+}
 
 //
 //

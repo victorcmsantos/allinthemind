@@ -1,29 +1,5 @@
-//class User {
-//  String nome;
-//  String email;
-//  String token;
-//  String id;
-//
-//  List<String> roles;
-//
-//  User.fromJson(Map<String, dynamic> map)
-//      : nome = map["username"],
-//        email = map["email"],
-//        token = map["token"],
-//        id = map["user_id"].toString(),
-//        roles = map["roles"] != null
-//            ? map["roles"].map<String>((role) => role.toString()).toList()
-//            : null;
-//
-//  @override
-//  String toString() {
-//    return 'User{nome: $nome, email: $email, token: $token, id: $id, roles: $roles}';
-//  }
-//}
-
 import 'dart:convert' as convert;
 
-//import 'package:allinthemind/utils/misc/prefs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class User {
@@ -59,15 +35,10 @@ class User {
   }
 
   void save() async {
-    //SharedPreferences.setMockInitialValues({});
     Map map = toJson();
     String json = convert.json.encode(map);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("tricolor", json);
-//    return json;
-////    Map ma1 = convert.json.decode(json);
-////    User user = User.fromJson(ma1);
-////    return user;
   }
 
   static Future<User> get() async {
@@ -78,16 +49,10 @@ class User {
     return user;
   }
 
-//  void save() {
-//    Map map = toJson();
-//    String json = convert.json.encode(map);
-//    Prefs.setString("user.prefs", json);
-//  }
-//
-//  static Future<User> get() async {
-//    String json = await Prefs.getString("user.prefs");
-//    Map map = convert.json.decode(json);
-//    User user = User.fromJson(map);
-//    return user;
-//  }
+  static Future<User> remove() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove("tricolor");
+  }
+
+
 }
