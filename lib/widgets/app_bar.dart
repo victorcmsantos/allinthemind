@@ -38,21 +38,25 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
       offset: Offset(200, 100),
       itemBuilder: (context) => [
-        PopupMenuItem(
-          child: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-              push(context, MyPage());
-            },
-            child: Container(
-              child: Center(
-                child: Text(user.username),
-              ),
-            ),
-          ),
-        ),
+
+        user != null ? _popupMenuItem(context, pushTo: MyPage(), text: user.username): null ,
+
+//        PopupMenuItem(
+//          child: InkWell(
+//            onTap: () {
+//              Navigator.pop(context);
+//              push(context, MyPage());
+//            },
+//            child: Container(
+//              child: Center(
+//                child: Text(user.username),
+//              ),
+//            ),
+//          ),
+//        ),
 
         PopupMenuItem(
+
           child: InkWell(
             onTap: () {
               Navigator.pop(context);
@@ -95,27 +99,27 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-//  PopupMenuItem<Widget> _popupMenuItem(
-//    BuildContext context, {
-//    String text,
-//    pushTo,
-//  }) {
-//    return PopupMenuItem(
-//      child: InkWell(
-//        onTap: () {
-//          Navigator.pop(context);
-//          push(context, pushTo);
-//        },
-//        child: Container(
-//          child: Center(
-//            child: Text(
-//              text,
-//            ),
-//          ),
-//        ),
-//      ),
-//    );
-//  }
+  PopupMenuItem<Widget> _popupMenuItem(
+    BuildContext context, {
+    String text,
+    pushTo,
+  }) {
+    return PopupMenuItem(
+      child: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+          push(context, pushTo);
+        },
+        child: Container(
+          child: Center(
+            child: Text(
+              text,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Size get preferredSize => new Size.fromHeight(appBar.preferredSize.height);
