@@ -22,22 +22,28 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           future: future,
           builder: (context, snapshot) {
             User user = snapshot.data;
-            return _PopupMenuButton(context, user);
-//            return user != null
-//                ? _PopupMenuButton(context, user)
-//                : Container();
+            return user != null
+                ? _PopupMenuButton(context, user)
+                : _PopupMenuButtonLogin(context, user);
           },
         ),
-
-//        _PopupMenuButton(context),
       ],
+    );
+  }
+
+  PopupMenuButton<Widget> _PopupMenuButtonLogin(
+      BuildContext context, User user) {
+    return PopupMenuButton(
+      icon: _userIcon(user),
+      offset: Offset(200, 100),
+      itemBuilder: (context) =>
+          [_popupMenuItem(context, pushTo: LoginPage(), text: "Login")],
     );
   }
 
   PopupMenuButton<Widget> _PopupMenuButton(BuildContext context, User user) {
     return PopupMenuButton(
       icon: _userIcon(user),
-
       offset: Offset(200, 100),
       itemBuilder: (context) => [
         user.roles.contains('admin') == true
@@ -46,24 +52,9 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         user.roles.contains('tutor') == true
             ? _popupMenuItem(context, pushTo: TutorPage(), text: "Tutor")
             : null,
-
         user != null
             ? _popupMenuItem(context, pushTo: MyPage(), text: user.username)
             : null,
-
-//        PopupMenuItem(
-//          child: InkWell(
-//            onTap: () {
-//              Navigator.pop(context);
-//              push(context, MyPage());
-//            },
-//            child: Container(
-//              child: Center(
-//                child: Text(user.username),
-//              ),
-//            ),
-//          ),
-//        ),
 
         PopupMenuItem(
           child: InkWell(
@@ -83,16 +74,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
         ),
-
-//        _popupMenuItem(context, pushTo: MyPage(), text: "meu user"),
-//        _popupMenuItem(context, pushTo: LoginPage(), text: "Login")
       ],
-//      onCanceled: () {
-//        print("You have canceled the menu.");
-//      },
-//      onSelected: (value) {
-//        push(context, value);
-//      },
     );
   }
 
@@ -103,7 +85,6 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         user != null
             ? 'assets/imagens/FILE0114.png'
             : 'assets/imagens/icognito_user.png',
-//              fit: BoxFit.fill,
       ),
     );
   }
@@ -115,15 +96,11 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   }) {
     return PopupMenuItem(
       child: InkWell(
-
         onTap: () {
           Navigator.pop(context);
           push(context, pushTo);
         },
         child: Container(
-//          color: Colors.orange,
-//          padding: EdgeInsets.all(15),
-//          margin: EdgeInsets.all(0),
           child: Center(
             child: Text(
               text,
