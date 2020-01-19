@@ -1,7 +1,10 @@
+import 'package:allinthemind/pages/register_page.dart';
 import 'package:allinthemind/utils/as_admin/list_users.dart';
 import 'package:allinthemind/utils/as_admin/list_users_api.dart';
 import 'package:allinthemind/utils/login/user.dart';
+import 'package:allinthemind/utils/nav.dart';
 import 'package:allinthemind/widgets/app_bar.dart';
+import 'package:allinthemind/widgets/app_button.dart';
 import 'package:allinthemind/widgets/lateral_menu.dart';
 import 'package:flutter/material.dart';
 
@@ -52,39 +55,53 @@ class _AdminPageState extends State<AdminPage> {
 
   Container _realbody(List<ListUsers> users) {
 
-
-
+    
+    
     return Container(
+      
 //      height: 400,
       padding: EdgeInsets.only(left: 16, right: 16),
-      child: ListView.builder(
-          itemCount: users != null ? users.length : 0,
-          itemBuilder: (context, index) {
-            ListUsers c = users[index];
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(16),
+            child: AppButton(
+              "Registrar Tutor",
+              onPressed_f: () => push(context, RegisterPage(), replace: true),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemCount: users != null ? users.length : 0,
+                itemBuilder: (context, index) {
+                  ListUsers c = users[index];
 
-            return Card(
-                color: Colors.grey[200],
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.all(0),
-                      padding: EdgeInsets.all(16),
-                      child: Text(c.username),
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(0),
-                      padding: EdgeInsets.all(16),
-                      child: Text(c.email),
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(0),
-                      padding: EdgeInsets.all(16),
-                      child: Text(c.roles.toString()),
-                    )
-                  ],
-                ));
-          }),
+                  return Card(
+                      color: Colors.grey[200],
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.all(0),
+                            padding: EdgeInsets.all(16),
+                            child: Text(c.username),
+                          ),
+                          Container(
+                            margin: EdgeInsets.all(0),
+                            padding: EdgeInsets.all(16),
+                            child: Text(c.email),
+                          ),
+                          Container(
+                            margin: EdgeInsets.all(0),
+                            padding: EdgeInsets.all(16),
+                            child: Text(c.roles.toString()),
+                          )
+                        ],
+                      ));
+                }),
+          ),
+        ],
+      ),
     );
   }
 }
