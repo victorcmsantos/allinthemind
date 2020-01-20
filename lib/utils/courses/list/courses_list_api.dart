@@ -16,7 +16,7 @@ class CoursesListApi {
       courses.add(c);
     }
 
-    //print(courses);
+//    print(courses);
 
     return courses;
 

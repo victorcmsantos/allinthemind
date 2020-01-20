@@ -41,4 +41,11 @@ class CoursesList {
     data['updated_at'] = this.updatedAt;
     return data;
   }
+
+  @override
+  String toString() {
+    return 'CoursesList{author: $author, createdAt: $createdAt, descriptionLogo: $descriptionLogo, descriptionText: $descriptionText, introductionJson: $introductionJson, name: $name, type: $type, updatedAt: $updatedAt}';
+  }
+
+
 }

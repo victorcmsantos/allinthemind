@@ -1,5 +1,8 @@
+import 'package:allinthemind/pages/create_class.dart';
 import 'package:allinthemind/utils/login/user.dart';
+import 'package:allinthemind/utils/nav.dart';
 import 'package:allinthemind/widgets/app_bar.dart';
+import 'package:allinthemind/widgets/app_button.dart';
 import 'package:allinthemind/widgets/lateral_menu.dart';
 import 'package:flutter/material.dart';
 
@@ -20,22 +23,64 @@ class _TutorPageState extends State<TutorPage> {
         future: future,
         builder: (context, snapshot) {
           User user = snapshot.data;
-          return user != null ? _body(user) : Container();
+          return user != null ? _body() : Container();
         },
       ),
     );
   }
 
-  Container _body(User user) {
+  _body() {
+    return _realbody();
+  }
+
+//  _body() {
+//  //  Future<List<ListUsers>> users = ListUsersApi.getUsers();
+//
+//    return FutureBuilder(
+//      future: ,
+//      builder: (context, snapshot) {
+//        if (snapshot.hasError) {
+//          return Center(
+//            child: Text(
+//              "Nao foi possivel conectar ao servidor",
+//              style: TextStyle(
+//                color: Colors.red,
+//                fontSize: 22,
+//              ),
+//            ),
+//          );
+//        }
+//
+//        if (!snapshot.hasData) {
+//          return Center(
+//            child: CircularProgressIndicator(),
+//          );
+//        }
+//        List<ListUsers> users = snapshot.data;
+//        return _realbody(users);
+//      },
+//    );
+//  }
+
+  _realbody() {
     return Container(
-      color: Colors.white70,
-      child: Center(
-        child: Text("Minhas Classes"),
-//        child: Column(
-//          children: <Widget>[
-//            Text('Classes'),
-//          ],
-//        ),
+      padding: EdgeInsets.only(left: 16, right: 16),
+      child: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                child: AppButton(
+                  "Criar nova Classe",
+                  onPressed_f: () => push(context, CreateClass(), replace: true),
+                ),
+              ),
+            ],
+          ),
+          Container(),
+
+        ],
       ),
     );
   }
