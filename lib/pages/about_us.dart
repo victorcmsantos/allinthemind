@@ -1,5 +1,5 @@
 
-import 'package:allinthemind/widgets/app_bar.dart';
+import 'package:allinthemind/widgets/app_menu_bar.dart';
 import 'package:allinthemind/widgets/lateral_menu.dart';
 import 'package:flutter/material.dart';
 

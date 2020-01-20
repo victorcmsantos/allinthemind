@@ -4,7 +4,7 @@ import 'package:allinthemind/utils/login/api_response.dart';
 import 'package:allinthemind/utils/login/register_api.dart';
 import 'package:allinthemind/utils/nav.dart';
 import 'package:allinthemind/utils/login/user.dart';
-import 'package:allinthemind/widgets/app_bar.dart';
+import 'package:allinthemind/widgets/app_menu_bar.dart';
 import 'package:allinthemind/widgets/app_button.dart';
 import 'package:allinthemind/widgets/app_text.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,7 @@
 import 'package:allinthemind/utils/courses/intro/course_intro_api.dart';
 import 'package:allinthemind/utils/courses/intro/course_introduction.dart';
 import 'package:allinthemind/utils/courses/list/courses_list.dart';
-import 'package:allinthemind/widgets/app_bar.dart';
+import 'package:allinthemind/widgets/app_menu_bar.dart';
 //import 'package:allinthemind/widgets/lateral_menu.dart';
 import 'package:flutter/material.dart';
 

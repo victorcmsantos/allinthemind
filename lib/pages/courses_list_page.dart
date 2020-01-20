@@ -2,7 +2,7 @@ import 'package:allinthemind/pages/course_intro_page.dart';
 import 'package:allinthemind/utils/courses/list/courses_list.dart';
 import 'package:allinthemind/utils/courses/list/courses_list_api.dart';
 import 'package:allinthemind/utils/nav.dart';
-import 'package:allinthemind/widgets/app_bar.dart';
+import 'package:allinthemind/widgets/app_menu_bar.dart';
 import 'package:allinthemind/widgets/lateral_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:allinthemind/vars/vars.dart' as globals;
