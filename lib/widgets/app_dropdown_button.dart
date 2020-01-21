@@ -1,5 +1,5 @@
-
-
+import 'package:allinthemind/utils/courses/list/courses_list.dart';
+import 'package:allinthemind/utils/courses/list/courses_list_api.dart';
 import 'package:flutter/material.dart';
 
 class AppDropDownButton extends StatefulWidget {
@@ -8,31 +8,48 @@ class AppDropDownButton extends StatefulWidget {
 }
 
 class _AppDropDownButtonState extends State<AppDropDownButton> {
+  Future<List<CoursesList>> courses = CoursesListApi.getCourses();
+  var selectedFc = 'CSS';
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text("aasdasdasda"),
-      ),
-    );
+    return _buildFutureBuilder();
+  }
+
+  FutureBuilder<List<CoursesList>> _buildFutureBuilder() {
+    return FutureBuilder<List<CoursesList>>(
+        future: CoursesListApi.getCourses(),
+        builder: (context, snapshot) {
+          var selectedFc = snapshot.data[0].name;
+//          var dropdownInitialValue = _region[0].name;
+          if (!snapshot.hasData) return CircularProgressIndicator();
+
+          return DropdownButton<String>(
+            hint: Text("Select"),
+            value: selectedFc,
+            onChanged: (newValue) {
+              setState(() {
+                selectedFc = newValue;
+              });
+            },
+
+            items: snapshot.data
+                .map((fc) => DropdownMenuItem<String>(
+                      child: Text(fc.name),
+                      value: fc.name,
+                    ))
+                .toList(),
+
+//            items: snapshot.data.map( (fc) {
+//              return DropdownMenuItem<String>(
+//                child: Text( fc.name ),
+//                value: fc.name,
+//              );
+//            } ),
+          );
+        });
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //import 'dart:convert' as convert;
 //import 'dart:convert';

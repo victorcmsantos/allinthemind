@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
     if (response.ok) {
       User user = response.result;
 
-      print(">>>> $user");
+     // print(">>>> $user");
 
       push(context, MyPage());
     } else {
