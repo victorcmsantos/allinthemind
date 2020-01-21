@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:allinthemind/utils/login/api_response.dart';
+import 'package:allinthemind/utils/misc/api_response.dart';
 import 'package:allinthemind/utils/login/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:allinthemind/vars/vars.dart' as globals;

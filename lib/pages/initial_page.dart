@@ -1,3 +1,4 @@
+import 'package:allinthemind/utils/valida_login.dart';
 import 'package:allinthemind/widgets/app_menu_bar.dart';
 import 'package:allinthemind/widgets/lateral_menu.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,8 @@ class InitialPage extends StatefulWidget {
 class _HomePageState extends State<InitialPage> {
   @override
   Widget build(BuildContext context) {
+    ValidaLogin.validator();
+
     return Scaffold(
       appBar: AppBarWidget(
         appBar: AppBar(),
@@ -24,4 +27,3 @@ class _HomePageState extends State<InitialPage> {
     );
   }
 }
-

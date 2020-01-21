@@ -1,7 +1,7 @@
 import 'package:allinthemind/pages/my_page.dart';
 import 'package:allinthemind/pages/register_page.dart';
 import 'package:allinthemind/utils/alert.dart';
-import 'package:allinthemind/utils/login/api_response.dart';
+import 'package:allinthemind/utils/misc/api_response.dart';
 import 'package:allinthemind/utils/login/loging_api.dart';
 import 'package:allinthemind/utils/nav.dart';
 import 'package:allinthemind/utils/login/user.dart';

@@ -1,6 +1,6 @@
 import 'package:allinthemind/pages/login_page.dart';
 import 'package:allinthemind/utils/alert.dart';
-import 'package:allinthemind/utils/login/api_response.dart';
+import 'package:allinthemind/utils/misc/api_response.dart';
 import 'package:allinthemind/utils/login/register_api.dart';
 import 'package:allinthemind/utils/nav.dart';
 import 'package:allinthemind/utils/login/user.dart';

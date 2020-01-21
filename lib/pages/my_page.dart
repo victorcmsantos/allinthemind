@@ -1,5 +1,6 @@
 //import 'package:allinthemind/utils/login/user.dart';
 import 'package:allinthemind/utils/login/user.dart';
+import 'package:allinthemind/utils/valida_login.dart';
 import 'package:allinthemind/widgets/app_menu_bar.dart';
 import 'package:allinthemind/widgets/lateral_menu.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:flutter/material.dart';
 
 class MyPage extends StatefulWidget {
   MyPage();
-
   @override
   _MyPageState createState() => _MyPageState();
 }
@@ -17,6 +17,9 @@ class _MyPageState extends State<MyPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    ValidaLogin.validator();
+
     return Scaffold(
       appBar: AppBarWidget(appBar: AppBar()),
       drawer: LateralMenu(),
