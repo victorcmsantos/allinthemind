@@ -1,4 +1,4 @@
-import 'package:allinthemind/pages/create_class.dart';
+import 'package:allinthemind/pages/create_class_page.dart';
 import 'package:allinthemind/utils/login/user.dart';
 import 'package:allinthemind/utils/nav.dart';
 import 'package:allinthemind/widgets/app_menu_bar.dart';
@@ -73,7 +73,7 @@ class _TutorPageState extends State<TutorPage> {
               Container(
                 child: AppButton(
                   "Criar nova Classe",
-                  onPressed_f: () => push(context, CreateClass(), replace: true),
+                  onPressed_f: () => push(context, CreateClassPage(), replace: true),
                 ),
               ),
             ],
