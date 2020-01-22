@@ -1,4 +1,6 @@
 import 'package:allinthemind/pages/create_class_page.dart';
+import 'package:allinthemind/utils/classes/list_classes.dart';
+import 'package:allinthemind/utils/classes/list_classes_api.dart';
 import 'package:allinthemind/utils/login/user.dart';
 import 'package:allinthemind/utils/nav.dart';
 import 'package:allinthemind/widgets/app_menu_bar.dart';
@@ -29,42 +31,43 @@ class _TutorPageState extends State<TutorPage> {
     );
   }
 
-  _body() {
-    return _realbody();
-  }
-
 //  _body() {
-//  //  Future<List<ListUsers>> users = ListUsersApi.getUsers();
-//
-//    return FutureBuilder(
-//      future: ,
-//      builder: (context, snapshot) {
-//        if (snapshot.hasError) {
-//          return Center(
-//            child: Text(
-//              "Nao foi possivel conectar ao servidor",
-//              style: TextStyle(
-//                color: Colors.red,
-//                fontSize: 22,
-//              ),
-//            ),
-//          );
-//        }
-//
-//        if (!snapshot.hasData) {
-//          return Center(
-//            child: CircularProgressIndicator(),
-//          );
-//        }
-//        List<ListUsers> users = snapshot.data;
-//        return _realbody(users);
-//      },
-//    );
+//    return _realbody();
 //  }
 
-  _realbody() {
+  _body() {
+    Future<List<ListClasses>> classe =
+        ListClassessApi.getClasses('/classes/list');
+
+    return FutureBuilder(
+      future: classe,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Center(
+            child: Text(
+              "Nao foi possivel conectar ao servidor",
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 22,
+              ),
+            ),
+          );
+        }
+
+        if (!snapshot.hasData) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        List<ListClasses> classe = snapshot.data;
+        return _realbody(classe);
+      },
+    );
+  }
+
+  _realbody(List<ListClasses> classe) {
     return Container(
-      padding: EdgeInsets.only(left: 16, right: 16),
+      padding: EdgeInsets.all(16),
       child: Column(
         children: <Widget>[
           Row(
@@ -73,13 +76,47 @@ class _TutorPageState extends State<TutorPage> {
               Container(
                 child: AppButton(
                   "Criar nova Classe",
-                  onPressed_f: () => push(context, CreateClassPage(), replace: true),
+                  onPressed_f: () =>
+                      push(context, CreateClassPage(), replace: true),
                 ),
               ),
             ],
           ),
-          Container(),
+          Container(
+            margin: EdgeInsets.all(0),
+            padding: EdgeInsets.all(16),
+            color: Colors.grey[200],
 
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Classe"),
+                Text("Curso"),
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: classe != null ? classe.length : 0,
+              itemBuilder: (context, index) {
+                ListClasses c = classe[index];
+                return Card(
+                  color: Colors.grey[200],
+                  child: Container(
+                    margin: EdgeInsets.all(0),
+                    padding: EdgeInsets.all(16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(c.classname),
+                        Text(c.course),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );

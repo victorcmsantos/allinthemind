@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'package:allinthemind/pages/tutor_page.dart';
 import 'package:allinthemind/utils/alert.dart';
 import 'package:allinthemind/utils/classes/create_class_api.dart';
 import 'package:allinthemind/utils/classes/list_classes.dart';
 import 'package:allinthemind/utils/courses/list/courses_list.dart';
 import 'package:allinthemind/utils/courses/list/courses_list_api.dart';
 import 'package:allinthemind/utils/misc/api_response.dart';
+import 'package:allinthemind/utils/nav.dart';
 import 'package:allinthemind/widgets/app_button.dart';
 import 'package:allinthemind/widgets/app_menu_bar.dart';
 import 'package:allinthemind/widgets/app_text.dart';
@@ -74,49 +76,42 @@ class _CreateClassPageState extends State<CreateClassPage> {
       key: _formKey,
       child: Container(
         padding: EdgeInsets.all( 16 ),
-        child: ListView(
-          children: <Widget>[
-            AppText(
-              "Classe",
-              "Digite o nome da nova Classe",
-              controller: _controllerClassName,
-              validator: _validatorClassName,
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            DropdownButton<String>(
-              hint: Text( "asdasdsda" ),
-              value: dropdownValue,
-//              icon: Icon(Icons.arrow_downward),
-//              iconSize: 24,
-//              elevation: 16,
-//
-//              underline: Container(
-//                height: 2,
-//                color: Colors.black,
-//              ),
-              onChanged: (String newValue) {
-                setState( () {
-                  dropdownValue = newValue;
-                } );
-              },
-              items: _region.map( (CoursesList map) {
-                return new DropdownMenuItem<String>(
-                  value: map.name,
-                  child: new Text(
-                    map.name,
-//                    style: new TextStyle(color: Colors.black),
-                  ),
-                );
-              } ).toList( ),
-            ),
-            AppButton(
-              "Criar nova Classe",
-              onPressed_f: _onClickCreateClass,
-              showProgress: _showProgress,
-            ),
-          ],
+        child: Center(
+          child: ListView(
+            children: <Widget>[
+              AppText(
+                "Classe",
+                "Digite o nome da nova Classe",
+                controller: _controllerClassName,
+                validator: _validatorClassName,
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              DropdownButton<String>(
+                hint: Text( "asdasdsda" ),
+                value: dropdownValue,
+                onChanged: (String newValue) {
+                  setState( () {
+                    dropdownValue = newValue;
+                  } );
+                },
+                items: _region.map( (CoursesList map) {
+                  return new DropdownMenuItem<String>(
+                    value: map.name,
+                    child: new Text(
+                      map.name,
+                    ),
+                  );
+                } ).toList( ),
+              ),
+              AppButton(
+                "Criar nova Classe",
+                onPressed_f: _onClickCreateClass,
+                showProgress: _showProgress,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -152,7 +147,7 @@ class _CreateClassPageState extends State<CreateClassPage> {
 
       print( ">>>> $user" );
 
-//      push(context, MyPage());
+      push(context, TutorPage());
     } else {
       alert( context, response.msg );
     }
@@ -160,20 +155,6 @@ class _CreateClassPageState extends State<CreateClassPage> {
     setState( () {
       _showProgress = false;
     } );
-  }
-
-  String _validatorLogin(String text) {
-    if (text.isEmpty) {
-      return "Digite o Login";
-    }
-    return null;
-  }
-
-  String _validatorSenha(String text) {
-    if (text.isEmpty) {
-      return "Digite a Senha";
-    }
-    return null;
   }
 
 }
