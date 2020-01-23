@@ -1,6 +1,7 @@
 import 'package:allinthemind/pages/register_page.dart';
 import 'package:allinthemind/utils/as_admin/list_users.dart';
-import 'package:allinthemind/utils/as_admin/list_users_api.dart';
+import 'package:allinthemind/utils/classes/list_classes.dart';
+import 'package:allinthemind/utils/classes/user_of_class_api.dart';
 import 'package:allinthemind/utils/login/user.dart';
 import 'package:allinthemind/utils/nav.dart';
 import 'package:allinthemind/widgets/app_menu_bar.dart';
@@ -8,24 +9,42 @@ import 'package:allinthemind/widgets/app_button.dart';
 import 'package:allinthemind/widgets/lateral_menu.dart';
 import 'package:flutter/material.dart';
 
-class AdminPage extends StatefulWidget {
+class ClassPage extends StatefulWidget {
+
+  ListClasses course;
+
+  ClassPage(this.course);
+
   @override
-  _AdminPageState createState() => _AdminPageState();
+  _ClassPageState createState() => _ClassPageState();
 }
 
-class _AdminPageState extends State<AdminPage> {
+class _ClassPageState extends State<ClassPage> {
   @override
   Widget build(BuildContext context) {
+
     Future<User> future = User.get();
     return Scaffold(
       appBar: AppBarWidget(appBar: AppBar()),
-      drawer: LateralMenu(),
-      body: _body(),
+//      drawer: LateralMenu(),
+      body: FutureBuilder<User>(
+        future: future,
+        builder: (context, snapshot) {
+          User user = snapshot.data;
+          if (user != null) {
+            return _body();
+          } else {
+            return Container(
+                  child: Text("sdf"),
+                );
+          }
+        },
+      ),
     );
   }
 
   _body() {
-    Future<List<ListUsers>> users = ListUsersApi.getUsers();
+    Future<List<ListUsers>> users = ListClassUsersApi.getUsers(widget.course.classname);
 
     return FutureBuilder(
       future: users,
@@ -53,7 +72,7 @@ class _AdminPageState extends State<AdminPage> {
     );
   }
 
-  Container _realbody(List<ListUsers> users) {
+  _realbody(List<ListUsers> users) {
     return Container(
       //      height: 400,
       padding: EdgeInsets.only(left: 16, right: 16),
@@ -62,10 +81,11 @@ class _AdminPageState extends State<AdminPage> {
           Container(
             padding: EdgeInsets.all(16),
             child: AppButton(
-              "Registrar Tutor",
+              "Adicionar alunos a classe",
               onPressed_f: () => push(context, RegisterPage(), replace: true),
             ),
           ),
+
           Expanded(
             child: ListView.builder(
               itemCount: users != null ? users.length : 0,
@@ -82,7 +102,6 @@ class _AdminPageState extends State<AdminPage> {
                       children: <Widget>[
                         Text(c.username),
                         Text(c.email),
-                        Text(c.roles.toString()),
                       ],
                     ),
                   ),

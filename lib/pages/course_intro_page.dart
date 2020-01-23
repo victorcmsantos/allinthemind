@@ -33,12 +33,8 @@ class CourseIntroPage extends StatelessWidget {
 //  }
 
   _body() {
-    //CoursesIntro actualcourse = CourseIntroApi.getCourses(course.introductionJson);
     Future<CoursesIntro> actualcourse =
         CourseIntroApi.getCourses(course.introductionJson);
-    //Future<Map<CoursesIntro>> actualcourse = CourseIntroApi.getCourses(course.introductionJson);
-
-    //Future<List<CoursesIntro>> actualcourse = CourseIntroApi.getCourses(course.introductionJson);
 
     return FutureBuilder(
       future: actualcourse,

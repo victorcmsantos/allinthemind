@@ -1,3 +1,4 @@
+import 'package:allinthemind/pages/class_page.dart';
 import 'package:allinthemind/pages/create_class_page.dart';
 import 'package:allinthemind/utils/classes/list_classes.dart';
 import 'package:allinthemind/utils/classes/list_classes_api.dart';
@@ -20,7 +21,7 @@ class _TutorPageState extends State<TutorPage> {
 
     return Scaffold(
       appBar: AppBarWidget(appBar: AppBar()),
-      drawer: LateralMenu(),
+//      drawer: LateralMenu(),
       body: FutureBuilder<User>(
         future: future,
         builder: (context, snapshot) {
@@ -86,7 +87,6 @@ class _TutorPageState extends State<TutorPage> {
             margin: EdgeInsets.all(0),
             padding: EdgeInsets.all(16),
             color: Colors.grey[200],
-
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -102,15 +102,20 @@ class _TutorPageState extends State<TutorPage> {
                 ListClasses c = classe[index];
                 return Card(
                   color: Colors.grey[200],
-                  child: Container(
-                    margin: EdgeInsets.all(0),
-                    padding: EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(c.classname),
-                        Text(c.course),
-                      ],
+                  child: InkWell(
+                    onTap: () {
+                      push(context, ClassPage(c));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(0),
+                      padding: EdgeInsets.all(16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(c.classname),
+                          Text(c.course),
+                        ],
+                      ),
                     ),
                   ),
                 );
